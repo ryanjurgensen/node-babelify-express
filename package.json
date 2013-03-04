@@ -1,6 +1,6 @@
 {
   "name": "browserify-express",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "browserify middleware for express",
   "main": "index.js",
   "repository": {
@@ -17,8 +17,8 @@
     "node-watch": "~0.2.8",
     "coffee-script": "~1.5.0",
     "through": "~2.2.0",
-    "uglify-js2": "~2.1.11",
-    "browserify": "~2.4.1"
+    "browserify": "~2.4.1",
+    "uglify-js": "~2.2.5"
   },
   "author": {
     "name": "Nathan Miller",

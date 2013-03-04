@@ -1,5 +1,5 @@
 var watcher = require('node-watch');
-var uglify = require('uglify-js2');
+var uglify = require('uglify-js');
 var browserify = require('browserify');
 var coffee = require('./coffee');
 
