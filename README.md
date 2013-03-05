@@ -1,4 +1,4 @@
-## browserify middleware for express 
+## browserify v2 middleware for express 
 
 Basically just brings back the features that were originally in browserify v1
 
