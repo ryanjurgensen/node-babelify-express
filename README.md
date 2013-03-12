@@ -12,7 +12,7 @@ var bundle = browserify_express({
 	mount: '/js/myapp.js',
 	verbose: true,
 	minify: true,
-	bundle_opts: { debug: true } # enable sourcemaps debugging in browserify
+	bundle_opts: { debug: true } // enable sourcemaps debugging in browserify
 });
 
 app.use(bundle);
