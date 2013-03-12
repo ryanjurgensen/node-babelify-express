@@ -11,9 +11,11 @@ function browserify_express(opts) {
 	if ( ! opts.entry) throw new Error('must provide an entry point');
 	if ( ! opts.mount) throw new Error('must provide a mount point');
 
-	bundle = browserify(opts.entry);
-	bundle.transform(coffee);
 	opts.bundle_opts = opts.bundle_opts || {};
+	opts.coffee_opts = opts.coffee_opts || {};
+
+	bundle = browserify(opts.entry);
+	bundle.transform( coffee(opts.coffee_opts) );
 
 	function bundle_it() {
 		var stime = new Date();

@@ -11,7 +11,8 @@ var bundle = browserify_express({
 	watch: __dirname + '/app/js/',
 	mount: '/js/myapp.js',
 	verbose: true,
-	minify: true
+	minify: true,
+	bundle_opts: { debug: true } # enable sourcemaps debugging in browserify
 });
 
 app.use(bundle);
@@ -23,6 +24,7 @@ In this example:
 * make the bundle accessible at '/js/myapp.js'
 * minify the bundle using uglify-js2
 * print messages to the console to show re-bundling and times
+* pass opts.debug to browserify.bundle
 
 ### using coffee-script
 
