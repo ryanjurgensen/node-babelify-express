@@ -12,7 +12,7 @@ var bundle = browserify_express({
 	mount: '/js/myapp.js',
 	verbose: true,
 	minify: true,
-	bundle_opts: { debug: true } # enable inline sourcemap on js files 
+	bundle_opts: { debug: true } // enable inline sourcemap on js files 
 });
 
 app.use(bundle);
