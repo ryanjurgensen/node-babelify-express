@@ -12,10 +12,9 @@ function browserify_express(opts) {
 	if ( ! opts.mount) throw new Error('must provide a mount point');
 
 	opts.bundle_opts = opts.bundle_opts || {};
-	opts.coffee_opts = opts.coffee_opts || {};
 
 	bundle = browserify(opts.entry);
-	bundle.transform( coffee(opts.coffee_opts) );
+	bundle.transform( coffee(opts.coffee_source_map) );
 
 	function bundle_it() {
 		var stime = new Date();

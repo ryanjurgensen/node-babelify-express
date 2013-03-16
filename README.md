@@ -12,7 +12,7 @@ var bundle = browserify_express({
 	mount: '/js/myapp.js',
 	verbose: true,
 	minify: true,
-	bundle_opts: { debug: true } # enable sourcemaps debugging in browserify
+	bundle_opts: { debug: true } # enable inline sourcemap on js files 
 });
 
 app.use(bundle);
@@ -29,6 +29,7 @@ In this example:
 ### using coffee-script
 
 This is supported by default however all your require()'s must include the .coffee extensions, it will not pick it up by default.
+
 
 e.g. require('../views/pop.coffee')
 
