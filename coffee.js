@@ -7,6 +7,7 @@ var convert = require('convert-source-map');
 function compile(source_map) {
 	function coffee_compile(file) {
 		if ( ! /\.coffee$/.test(file)) return through();
+
 		var data = '';
 
 		function write(buf) { 
