@@ -5,7 +5,7 @@ Basically just brings back the features that were originally in browserify v1
 This is how you use it in an Express project.
 
 ```javascript
-var browser_express = require('browserify-express');
+var browserify_express = require('browserify-express');
 var bundle = browserify_express({
 	entry: __dirname + '/app/js/entry.js',
 	watch: __dirname + '/app/js/',

@@ -1,6 +1,6 @@
 {
   "name": "browserify-express",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "browserify v2 middleware for express",
   "main": "index.js",
   "repository": {
