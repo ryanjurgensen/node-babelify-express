@@ -12,7 +12,8 @@ function browserify_express(opts) {
 	if ( ! opts.mount) throw new Error('must provide a mount point');
 
 	opts.bundle_opts = opts.bundle_opts || {};
-
+  opts.watch_opts = opts.watch_opts || {};
+  
 	bundle = browserify(opts.entry);
 	bundle.transform( coffee(opts.coffee_source_map) );
 
@@ -35,7 +36,7 @@ function browserify_express(opts) {
 
 	if (opts.watch) {
 		console.log('browserify -- watching ' + opts.watch);
-		watcher(opts.watch, bundle_it);	
+		watcher(opts.watch, opts.watch_opts, bundle_it);	
 	}
 	
 	return function(req, res, next) {

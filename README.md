@@ -12,7 +12,8 @@ var bundle = browserify_express({
 	mount: '/js/myapp.js',
 	verbose: true,
 	minify: true,
-	bundle_opts: { debug: true } // enable inline sourcemap on js files 
+	bundle_opts: { debug: true }, // enable inline sourcemap on js files 
+	watch_opts: { recursive: false} // disable recursive file watch
 });
 
 app.use(bundle);
@@ -25,6 +26,7 @@ In this example:
 * minify the bundle using uglify-js2
 * print messages to the console to show re-bundling and times
 * pass opts.debug to browserify.bundle
+* pass recursive:false to node-watch (see all options for [node-watch](https://npmjs.org/package/node-watch))
 
 ### using coffee-script
 
