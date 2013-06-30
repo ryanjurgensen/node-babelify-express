@@ -1,4 +1,4 @@
-var watcher = require('node-watch');
+var watchr = require('watchr');
 var uglify = require('uglify-js');
 var browserify = require('browserify');
 var coffee = require('./coffee');
@@ -35,8 +35,26 @@ function browserify_express(opts) {
 	bundle_it();
 
 	if (opts.watch) {
-		console.log('browserify -- watching ' + opts.watch);
-		watcher(opts.watch, opts.watch_opts, bundle_it);	
+		// watchr seems more reliable than node-watch...
+		watchr.watch({
+			paths: [opts.watch],
+			listeners: {
+				error: function(err) {
+					console.log('browserify --', err);
+				},
+				watching: function(err, instance, watching) {
+					if (err) console.log('browserify -- failed to watch', instance.path);
+					else console.log('browserify -- watching', instance.path);
+				},
+				change: function(type, path, curstat, oldstat) {
+					console.log(type, path);
+					bundle_it();
+				}
+			},
+			next: function(err, watchers) {
+				if (err) { return console.log('browserify -- failed', err); }
+			}
+		});
 	}
 	
 	return function(req, res, next) {
