@@ -1,6 +1,6 @@
 {
   "name": "browserify-express",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "browserify v2 middleware for express",
   "main": "index.js",
   "repository": {
@@ -18,7 +18,8 @@
     "convert-source-map": "~0.2.5",
     "watchr": "~2.4.3",
     "through": "~2.3.4",
-    "uglify-js": "~2.3.6"
+    "uglify-js": "~2.3.6",
+    "browserify": "~2.22.0"
   },
   "author": {
     "name": "Nathan Miller",
