@@ -13,6 +13,7 @@ var bundle = browserify_express({
 	verbose: true,
 	minify: true,
 	bundle_opts: { debug: true } // enable inline sourcemap on js files 
+	write_file: __dirname + '/public/js/myapp.js'
 });
 
 app.use(bundle);
@@ -26,6 +27,7 @@ In this example:
 * print messages to the console to show re-bundling and times
 * pass opts.debug to browserify.bundle
 * pass recursive:false to node-watch (see all options for [node-watch](https://npmjs.org/package/node-watch))
+* write the file to disk at the specified path
 
 ### using coffee-script
 

@@ -1,3 +1,4 @@
+var fs = require('fs');
 var watchr = require('watchr');
 var uglify = require('uglify-js');
 var browserify = require('browserify');
@@ -25,6 +26,18 @@ function browserify_express(opts) {
 
 			if (opts.minify) cache = uglify.minify(cache, {fromString: true}).code;
 			
+			if (opts.write_file) {
+				fs.writeFile(opts.write_file, cache, function (err) {
+					if (err) {
+						console.log('browserify -- could not write file', opts.write_file);
+						throw err;
+					}
+					else {
+						if (opts.verbose) console.log('browserify -- writing file', opts.write_file);
+					}
+				});
+			}
+			
 			if (opts.verbose) {
 				var bundle_seconds = Number(((new Date()) - stime) / 1000);
 				console.log('browserify -- bundled [' + bundle_seconds.toFixed(2) + 's] ' + opts.mount);
@@ -47,7 +60,7 @@ function browserify_express(opts) {
 					else console.log('browserify -- watching', instance.path);
 				},
 				change: function(type, path, curstat, oldstat) {
-					console.log(type, path);
+					console.log('browserify -- file changed', path);
 					bundle_it();
 				}
 			},
