@@ -17,7 +17,9 @@ function browserify_express(opts) {
   
 	bundle = browserify(opts.entry);
 	bundle.transform( coffee(opts.coffee_source_map) );
-
+	for(var i =0; i< opts.ignore.length; i++){
+		bundle.ignore(opts.ignore[i]);
+	}
 	function bundle_it() {
 		var stime = new Date();
 		bundle.bundle(opts.bundle_opts, function(err, src) {
