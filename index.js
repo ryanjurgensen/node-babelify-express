@@ -16,10 +16,16 @@ function browserify_express(opts) {
   opts.watch_opts = opts.watch_opts || {};
   
 	bundle = browserify(opts.entry);
-	bundle.transform( coffee(opts.coffee_source_map) );
-	for(var i =0; i< opts.ignore.length; i++){
-		bundle.ignore(opts.ignore[i]);
+
+	// optional list of files to ignore
+	if (Array.isArray(opts.ignore) {
+		opts.ignore.forEach(function(i) {
+			bundle.ignore(i);
+		});
 	}
+
+	bundle.transform( coffee(opts.coffee_source_map) );
+
 	function bundle_it() {
 		var stime = new Date();
 		bundle.bundle(opts.bundle_opts, function(err, src) {

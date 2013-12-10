@@ -13,7 +13,8 @@ var bundle = browserify_express({
 	verbose: true,
 	minify: true,
 	bundle_opts: { debug: true } // enable inline sourcemap on js files 
-	write_file: __dirname + '/public/js/myapp.js'
+	write_file: __dirname + '/public/js/myapp.js',
+	ignore: ['optional.js'] // optional array of files to ignore
 });
 
 app.use(bundle);
