@@ -18,7 +18,7 @@ function browserify_express(opts) {
 	bundle = browserify(opts.entry);
 
 	// optional list of files to ignore
-	if (Array.isArray(opts.ignore) {
+	if (Array.isArray(opts.ignore)) {
 		opts.ignore.forEach(function(i) {
 			bundle.ignore(i);
 		});
